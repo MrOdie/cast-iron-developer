@@ -1,0 +1,16 @@
+@use "../Format/color.scss" as *;
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+  background-color: map-get($odiePallet, color1);
+
+  .innerHeader {
+    grid-column: 2/3;
+    text-align: center;
+
+    .heading {
+      color: $white;
+    }
+  }
+}
