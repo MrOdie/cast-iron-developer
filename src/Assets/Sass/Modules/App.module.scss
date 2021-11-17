@@ -1,0 +1,24 @@
+@use "../Format/color.scss" as *;
+
+.Main {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  grid-template-rows: 100%;
+
+  .Nav {
+    grid-column: 1/2;
+    background-color: map-get($odiePallet, color1);
+    padding: 0.5rem;
+  }
+
+  .Body {
+    grid-column: 2/3;
+    margin: 2rem;
+    padding: 2rem;
+  }
+}

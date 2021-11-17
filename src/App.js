@@ -1,13 +1,15 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // Partials
-import Header from "./Components/Partials/Header";
+import Nav from "./Components/Partials/Nav";
 import Footer from "./Components/Partials/Footer";
 
 // Pages
 import Home from "./Components/Pages/Home";
 import About from "./Components/Pages/About";
+
+import styles from "./Assets/Sass/Modules/App.module.scss";
 
 import "./Assets/Sass/style.scss";
 import "./Assets/Fonts/Typography.css";
@@ -15,14 +17,18 @@ import "./Assets/Fonts/Typography.css";
 const App = () => (
   <>
     <Router>
-      <Header />
-      <Link to="/">Home</Link>
-      <Link to="/about">Test</Link>
-      <Routes>
-        <Route exact path="/" element={<Home />}></Route>
-        <Route path="/about" element={<About />}></Route>
-      </Routes>
-      <Footer />
+      <main className={styles.Main}>
+        <section className={styles.Nav}>
+          <Nav />
+        </section>
+        <section className={styles.Body}>
+          <Routes>
+            <Route exact path="/" element={<Home />}></Route>
+            <Route path="/about" element={<About />}></Route>
+          </Routes>
+          <Footer />
+        </section>
+      </main>
     </Router>
   </>
 );

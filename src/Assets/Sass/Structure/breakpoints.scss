@@ -23,7 +23,7 @@
   }
   @else if $point == nav {
     // 481 - 699
-    @media (min-width: 480px + 1) and (max-width: 700px - 1) {
+    @media (min-width: 481px) and (max-width: 699px) {
       @content;
     }
   }
@@ -35,31 +35,31 @@
   }
   @else if $point == lg_tablet {
     // 769 - 992
-    @media (min-width: 768px + 1) and (max-width: 992px) {
+    @media (min-width: 769px) and (max-width: 992px) {
       @content;
     }
   }
   @else if $point == sm_desktop {
     // 993 - 1155
-    @media (min-width: 992px + 1) and (max-width: 1155px) {
+    @media (min-width: 993px) and (max-width: 1155px) {
       @content;
     }
   }
   @else if $point == desktop {
     // 1156 - 1210
-    @media (min-width: 1155px + 1) and (max-width: 1210px) {
+    @media (min-width: 1156px) and (max-width: 1210px) {
       @content;
     }
   }
   @else if $point == large {
     // 1211 - 1600
-    @media (min-width: 1210px + 1) and (max-width: 1600px) {
+    @media (min-width: 1211px) and (max-width: 1600px) {
       @content;
     }
   }
   @else if $point == really_big {
     // 1601 and above
-    @media (min-width: 1600px + 1) {
+    @media (min-width: 1601px) {
       @content;
     }
   }
