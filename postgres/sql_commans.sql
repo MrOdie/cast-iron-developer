@@ -3,11 +3,13 @@ CREATE TABLE "user"
 (
     user_id serial PRIMARY KEY,
     username VARCHAR(50) UNIQUE NOT NULL,
-    password VARCHAR(50) NOT NULL ,
+    password VARCHAR(50) NOT NULL,
     email VARCHAR(50) UNIQUE NOT NULL,
     created_on TIMESTAMP NOT NULL,
     last_login TIMESTAMP NOT NULL
 );
+
+-- INSERT INTO table_name(column1, column2, …) VALUES (value1, value2, …);
 
 INSERT INTO "user" (username, password, email, created_on, last_login) VALUES ('sodonn', '12345', 'test@gmail.com', CURRENT_TIMESTAMP, now());
 
