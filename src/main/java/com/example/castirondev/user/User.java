@@ -1,9 +1,17 @@
 package com.example.castirondev.user;
 
+import com.sun.istack.NotNull;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.beans.factory.annotation.Required;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.sql.Time;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -12,30 +20,40 @@ import java.util.Objects;
 public class User {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="user_id")
     private Long id;
 
     @Column(unique = true)
+    @NotNull
     private String username;
 
+    @NotNull
     private String password;
 
+    @NotNull
     @Column(unique = true)
     private String email;
 
-    @Column(name="created_on")
-    private String createdOn;
+    private boolean active;
 
+    @CreationTimestamp
+    @Column(name="created_on", nullable = false, updatable = false)
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private Date createdOn;
+
+    @UpdateTimestamp
     @Column(name="last_login")
-    private String lastLogin;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private Date lastLogin;
 
     public User() {}
 
-    public User(String username, String password, String email) {
+    public User(String username, String password, String email, boolean active) {
         this.username = username;
         this.password = password;
         this.email = email;
+        this.active = active;
     }
 
     public Long getId() {
@@ -70,20 +88,28 @@ public class User {
         this.email = email;
     }
 
-    public String getCreatedOn() {
+    public Date getCreatedOn() {
         return createdOn;
     }
 
-    public void setCreatedOn(String createdOn) {
+    public void setCreatedOn(Date createdOn) {
         this.createdOn = createdOn;
     }
 
-    public String getLastLogin() {
+    public Date getLastLogin() {
         return lastLogin;
     }
 
-    public void setLastLogin(String lastLogin) {
+    public void setLastLogin(Date lastLogin) {
         this.lastLogin = lastLogin;
+    }
+
+    public boolean getActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     @Override

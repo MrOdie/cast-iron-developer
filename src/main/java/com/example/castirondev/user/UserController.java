@@ -52,4 +52,24 @@ public class UserController {
         return ResponseEntity.created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri()).body(entityModel);
     }
 
+    @PutMapping("/user/{id}")
+    ResponseEntity<?> updateUser(@RequestBody User user, @PathVariable Long id) {
+
+        User updatedUser = repository.findById(id)
+                .map(u -> {
+                    u.setUsername(u.getUsername());
+                    u.setPassword(u.getPassword());
+                    u.setActive(u.getActive());
+
+                    return repository.save(u);
+                }).orElseGet(() -> {
+                    user.setId(id);
+                    return repository.save(user);
+                });
+
+        EntityModel<User> entityModel = assembler.toModel(updatedUser);
+
+        return ResponseEntity.created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri()).body(entityModel);
+    }
+
 }

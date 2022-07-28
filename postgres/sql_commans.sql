@@ -5,6 +5,7 @@ CREATE TABLE "user"
     username VARCHAR(50) UNIQUE NOT NULL,
     password VARCHAR(50) NOT NULL,
     email VARCHAR(50) UNIQUE NOT NULL,
+    active BOOLEAN DEFAULT true,
     created_on TIMESTAMP NOT NULL,
     last_login TIMESTAMP NOT NULL
 );
@@ -39,7 +40,7 @@ CREATE TABLE "posts"
     title VARCHAR(100) UNIQUE NOT NULL,
     description VARCHAR(350) NOT NULL,
     body TEXT NOT NULL,
-    draft Boolean NOT NULL,
+    draft Boolean NOT NULL DEFAULT true,
     created_date TIMESTAMP NOT NULL,
     published_date TIMESTAMP NOT NULL
 );
@@ -59,6 +60,8 @@ CREATE TABLE "post_creator"
 
 -- Queries:
 ALTER TABLE "posts" ADD CONSTRAINT unique_title UNIQUE (title);
+
+ALTER TABLE "user" ADD COLUMN active BOOLEAN DEFAULT true;
 
 
 
