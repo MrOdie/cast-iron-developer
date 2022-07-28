@@ -24,6 +24,16 @@ public class UserController {
         this.assembler = assembler;
     }
 
+    /**
+     * TODO FOR THIS CONTROLLER:
+     *
+     * ADD PATH PARAMETERS TO:
+     *  Get user (active = true/false)
+     *
+     * Add Logic for the admin to change a user's role/active status
+     * @return
+     */
+
     // Get All Users
     @GetMapping("/users")
     CollectionModel<EntityModel<User>> all() {
