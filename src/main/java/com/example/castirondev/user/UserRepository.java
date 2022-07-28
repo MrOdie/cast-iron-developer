@@ -1,4 +1,4 @@
-package com.example.castirondev;
+package com.example.castirondev.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

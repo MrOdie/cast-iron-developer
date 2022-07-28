@@ -1,9 +1,13 @@
-package com.example.castirondev;
+package com.example.castirondev.user;
+
+import lombok.Data;
+import org.springframework.beans.factory.annotation.Required;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
+@Data
 @Table(name="user", schema="public")
 public class User {
 
@@ -12,10 +16,12 @@ public class User {
     @Column(name="user_id")
     private Long id;
 
+    @Column(unique = true)
     private String username;
 
     private String password;
 
+    @Column(unique = true)
     private String email;
 
     @Column(name="created_on")
@@ -26,13 +32,10 @@ public class User {
 
     public User() {}
 
-    public User(Long id, String username, String password, String email, String createdOn, String lastLogin) {
-        this.id = id;
+    public User(String username, String password, String email) {
         this.username = username;
         this.password = password;
         this.email = email;
-        this.createdOn = createdOn;
-        this.lastLogin = lastLogin;
     }
 
     public Long getId() {
